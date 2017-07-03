@@ -1,0 +1,23 @@
+<h1>Makeup List Items</h1>
+
+<%= form_tag makeup_path, method: :get do %>
+  <%= text_field_tag 'term', params[:term], placeholder: "Search for item.." %>
+  <%= submit_tag 'Search!' %>
+<% end %>
+
+<br />
+<%= link_to "Create Makeup Item", addmakeupitem_path %>
+
+<br />
+<%= link_to "Sort Alphabetically", makeup_path + "?sort_by=alpha" %>
+<%= link_to "Sort by Price", makeup_path + "?sort_by=price" %>
+<%= link_to "Sort by Rating", makeup_path + "?sort_by=rating" %>
+
+<% @makeupItems.each do |item| %>
+	<ul>
+	    <li><%= item.name %></li>
+	    <li><%= item.description %></li>
+	    <li>$<%= item.price %></li>
+	    <li><%= item.average_rating %></li>
+	</ul>
+<% end %>

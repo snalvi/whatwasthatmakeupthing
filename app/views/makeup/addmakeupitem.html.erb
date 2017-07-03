@@ -1,0 +1,19 @@
+<h1>Create Makeup Item</h1>
+
+<%= form_for @makeupItem, url: {action: "create"} do |f| %>
+<br />
+	<%= label_tag(:makeupItemName, "Name:") %>
+	<%= f.text_field :name %>
+<br />
+	<%= label_tag(:makeupItemDesc, "Description:") %>
+	<%= f.text_area :description, size: "60x12" %>
+<br />
+	<%= label_tag(:makeupItemPrice, "Price:") %>
+	<%= f.text_field :price %>
+<br />
+	<%= label_tag(:makeupItemRating, "Rating:") %>
+	<%= f.text_field :average_rating %>
+<br />
+	<%= f.submit "Create" %>
+<br />
+<% end %>

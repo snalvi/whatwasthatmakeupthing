@@ -1,0 +1,1 @@
+Figaro.require_keys("PG_USERNAME", "PG_PASSWORD")
