@@ -36,13 +36,11 @@ class MakeupController < ApplicationController
 		end
 	end
 
-	def new
-		@makeupItem = MakeupItem.new
-	end
-
 	def create
-		@makeupItem = MakeupItem.new(addMakeupItemParams)
-		@makeupItem.save
+		params = addMakeupItemParams
+		puts "==== params: #{params}"
+		@makeupItem = MakeupItem.new(params)
+		@makeupItem.save!
 
 		redirect_to makeup_path
 	end
@@ -50,6 +48,6 @@ class MakeupController < ApplicationController
 	private
 
 	def addMakeupItemParams
-		params.require(:makeup_item).permit(:name, :description, :price, :average_rating)
+		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, :user_id)
 	end
 end

@@ -14,6 +14,9 @@
 	<%= label_tag(:makeupItemRating, "Rating:") %>
 	<%= f.text_field :average_rating %>
 <br />
+	<%= label_tag(:makeupItemUser, "User:") %>
+	<%= f.select :user_id, options_for_select( (1..5).map{|n| n.to_i}) %>
+<br />
 	<%= f.submit "Create" %>
 <br />
 <% end %>
