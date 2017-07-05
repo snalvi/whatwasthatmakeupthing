@@ -2,7 +2,6 @@ class MakeupController < ApplicationController
 	require 'figaro'
 
 	def index
-		testItem = Figaro.env.PG_USERNAME
 		searchQuery = params[:term]
 		if searchQuery && !searchQuery.empty?
 			@makeupItems = MakeupItem.search_by_name(params[:term])
@@ -38,7 +37,6 @@ class MakeupController < ApplicationController
 
 	def create
 		params = addMakeupItemParams
-		puts "==== params: #{params}"
 		@makeupItem = MakeupItem.new(params)
 		@makeupItem.save!
 
@@ -48,6 +46,6 @@ class MakeupController < ApplicationController
 	private
 
 	def addMakeupItemParams
-		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, :user_id)
+		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, :user_id, :filepicker_url)
 	end
 end

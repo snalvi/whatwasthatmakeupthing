@@ -3,12 +3,13 @@
   <head>
     <title>Makeup</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= filepicker_js_include_tag %>
   </head>
 
   <body>
+
     <%= yield %>
   </body>
 </html>
