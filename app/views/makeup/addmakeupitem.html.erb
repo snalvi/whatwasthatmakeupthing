@@ -17,6 +17,10 @@
 	<%= label_tag(:makeupItemUser, "User:") %>
 	<%= f.select :user_id, options_for_select( (1..5).map{|n| n.to_i}) %>
 <br />
+<br />
+	<%= label_tag(:makeupType, "Makeup Type:") %>
+	<%= f.select :makeup_type, MakeupItem.makeup_types.keys.to_a %>
+<br />
   <div>
     <%= f.label :filepicker_url, "Upload makeup image:" %>
     <%= f.filepicker_field :filepicker_url %>
