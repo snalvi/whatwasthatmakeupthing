@@ -1,0 +1,6 @@
+<% if current_makeup_user %>
+<%= link_to "Edit", edit_makeup_user_registration_path %>
+<%= link_to "Logout", destroy_makeup_user_session_path, method: "delete" %>
+<% else %>
+<%= link_to "Login", new_makeup_user_session_path %>
+<% end %>

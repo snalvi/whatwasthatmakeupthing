@@ -9,7 +9,20 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
 
-    <%= yield %>
+        <div class="collapse navbar-collapse" id="menu-collapse">
+
+          <%= render 'layouts/navigation' %>
+
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
+
 </html>

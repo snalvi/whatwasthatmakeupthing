@@ -1,6 +1,8 @@
 class MakeupController < ApplicationController
 	require 'figaro'
 
+	before_action :authenticate_makeup_user!, except: [:index]
+
 	def index
 		searchQuery = params[:term]
 		if searchQuery && !searchQuery.empty?
@@ -46,6 +48,6 @@ class MakeupController < ApplicationController
 	private
 
 	def addMakeupItemParams
-		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, :user_id, :filepicker_url)
+		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, :user_id, :filepicker_url, :makeup_type)
 	end
 end

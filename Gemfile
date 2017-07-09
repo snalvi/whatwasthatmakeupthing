@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faker'
 gem 'figaro'
+gem 'devise'
 gem 'filestack-rails', require: 'filepicker-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
