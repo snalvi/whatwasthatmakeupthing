@@ -1,0 +1,11 @@
+<% if @makeupItem.invalid? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@makeupItem.errors.count, "error") %> prohibited this item from being saved:</h2>
+ 
+    <ul>
+    <% @makeupItem.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

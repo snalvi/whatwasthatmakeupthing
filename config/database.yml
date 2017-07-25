@@ -1,10 +1,16 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  # adapter: postgresql
+  # encoding: unicode
+  # pool: 5
+  # host: localhost
+  # username: <%= ENV['PG_USERNAME'] %>
+  # password: <%= ENV['PG_PASSWORD'] %>
+  adapter: mysql2
+  # encoding: unicode
   pool: 5
   host: localhost
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
 
 development:
   <<: *default

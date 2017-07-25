@@ -1,8 +1,8 @@
 class MakeupController < ApplicationController
 	require 'figaro'
-
 	before_action :authenticate_makeup_user!, except: [:index]
-
+	before_action :setup_makeup_item, except: [:index]
+	
 	def index
 		searchQuery = params[:term]
 		if searchQuery && !searchQuery.empty?
@@ -24,7 +24,7 @@ class MakeupController < ApplicationController
 	end
 
 	def addmakeupitem
-		@makeupItem = MakeupItem.new
+		setup_makeup_item
 	end
 
 	def allMakeupItems
@@ -38,16 +38,29 @@ class MakeupController < ApplicationController
 	end
 
 	def create
+		setup_makeup_item
 		params = addMakeupItemParams
-		@makeupItem = MakeupItem.new(params)
-		@makeupItem.save!
+		params[:user_id] = current_makeup_user.id
 
-		redirect_to makeup_path
+		@makeupItem.update(params)
+
+		puts "== makeup params: #{params.inspect}"
+
+		puts "=== valid: #{@makeupItem.valid?}"
+		puts "==== new? #{@makeupItem.new_record?}"
+
+		redirect_to makeup_path if @makeupItem.valid?
 	end
 
 	private
 
+	def setup_makeup_item
+		puts "=== making a new makeup item"
+		@makeupItem = MakeupItem.new
+	end
+
 	def addMakeupItemParams
-		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, :user_id, :filepicker_url, :makeup_type)
+		params.require(:makeup_item).permit(:name, :description, :price, :average_rating, 
+			:filepicker_url, :makeup_type)
 	end
 end

@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709032416) do
+ActiveRecord::Schema.define(version: 20170715180023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+# Could not dump table "makeup_items" because of following StandardError
+#   Unknown type 'makeup_type' for column 'makeup_type'
 
   create_table "makeup_users", force: :cascade do |t|
     t.string "email", default: "", null: false

@@ -30,6 +30,7 @@ gem 'faker'
 gem 'figaro'
 gem 'devise'
 gem 'filestack-rails', require: 'filepicker-rails'
+gem 'mysql2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

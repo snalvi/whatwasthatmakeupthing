@@ -1,22 +1,21 @@
 <h1>Create Makeup Item</h1>
 
 <%= form_for @makeupItem, url: {action: "create"} do |f| %>
+<%= render 'shared/error_messages' %>
 <br />
 	<%= label_tag(:makeupItemName, "Name:") %>
-	<%= f.text_field :name %>
+	<%= f.text_field :name, class: 'form-control' %>
+
 <br />
 	<%= label_tag(:makeupItemDesc, "Description:") %>
-	<%= f.text_area :description, size: "60x12" %>
+	<%= f.text_area :description, size: "60x12", class: 'form-control'  %>
+
 <br />
 	<%= label_tag(:makeupItemPrice, "Price:") %>
-	<%= f.text_field :price %>
+	<%= f.text_field :price , class: 'form-control' %>
 <br />
 	<%= label_tag(:makeupItemRating, "Rating:") %>
-	<%= f.text_field :average_rating %>
-<br />
-	<%= label_tag(:makeupItemUser, "User:") %>
-	<%= f.select :user_id, options_for_select( (1..5).map{|n| n.to_i}) %>
-<br />
+	<%= f.text_field :average_rating, class: 'form-control'  %>
 <br />
 	<%= label_tag(:makeupType, "Makeup Type:") %>
 	<%= f.select :makeup_type, MakeupItem.makeup_types.keys.to_a %>
@@ -25,6 +24,6 @@
     <%= f.label :filepicker_url, "Upload makeup image:" %>
     <%= f.filepicker_field :filepicker_url %>
   </div>
-	<%= f.submit "Create" %>
+	<%= f.button "Create" %>
 <br />
 <% end %>
