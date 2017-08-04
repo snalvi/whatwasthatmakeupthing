@@ -12,13 +12,20 @@
 
 ActiveRecord::Schema.define(version: 20170715180023) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "makeup_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.decimal "price", precision: 10, null: false
+    t.decimal "average_rating", precision: 10, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "filepicker_url"
+    t.string "makeup_type"
+    t.index ["user_id"], name: "index_makeup_items_on_user_id"
+  end
 
-# Could not dump table "makeup_items" because of following StandardError
-#   Unknown type 'makeup_type' for column 'makeup_type'
-
-  create_table "makeup_users", force: :cascade do |t|
+  create_table "makeup_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -27,15 +34,13 @@ ActiveRecord::Schema.define(version: 20170715180023) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_makeup_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_makeup_users_on_reset_password_token", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "frist_name"
     t.string "last_name"
     t.datetime "created_at", null: false
